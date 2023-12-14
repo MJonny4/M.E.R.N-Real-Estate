@@ -1,0 +1,21 @@
+{
+    "author": "Ion Munteanu",
+    "name": "mern-state",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "type": "module",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "dev": "nodemon api/index.js",
+        "start": "node api/index.js"
+    },
+    "keywords": [],
+    "license": "ISC",
+    "devDependencies": {
+        "dotenv": "^16.3.1",
+        "express": "^4.18.2",
+        "mongoose": "^8.0.3",
+        "nodemon": "^3.0.2"
+    }
+}
