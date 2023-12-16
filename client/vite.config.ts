@@ -9,4 +9,12 @@ export default defineConfig({
             '@pages': '/src/pages',
         },
     },
+    server: {
+        proxy: {
+            '/api': {
+                target: 'http://localhost:3000',
+                secure: false,
+            },
+        },
+    },
 });
