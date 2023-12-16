@@ -60,8 +60,12 @@ export const signin = async (req, res, next) => {
             process.env.JWT_SECRET,
             { expiresIn: '1h' }
         );
+        const { password: hashedPassword, ...user } = validUser._doc;
+
         res.cookie('access_token', token, { httpOnly: true }).status(200).json({
-            validUser,
+            success: true,
+            message: 'User logged in successfully!',
+            user,
         });
     } catch (err) {
         next(errorHandler(500, err.message));
