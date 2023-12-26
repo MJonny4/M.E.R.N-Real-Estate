@@ -23,7 +23,8 @@
         /* Paths */
         "baseUrl": "./",
         "paths": {
-            "@pages/*": ["src/pages/*"]
+            "@pages/*": ["src/pages/*"],
+            "@components/*": ["src/components/*"]
         }
     },
     "include": ["src"],
