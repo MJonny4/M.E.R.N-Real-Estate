@@ -56,3 +56,4 @@ export const deleteUser = async (req, res, next) => {
         return next(errorHandler(500, 'Error deleting user'));
     }
 };
+

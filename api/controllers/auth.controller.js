@@ -122,3 +122,16 @@ export const google = async (req, res, next) => {
         next(errorHandler(500, err.message));
     }
 };
+
+export const signOut = async (req, res, next) => {
+    try {
+        res.clearCookie('access_token');
+        res.status(200).json({
+            success: true,
+            message: 'User signed out',
+        });
+    } catch (error) {
+        return next(errorHandler(500, 'Error signing out user'));
+    }
+};
+
