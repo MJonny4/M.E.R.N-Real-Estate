@@ -19,6 +19,7 @@ import {
     signOutUserFailure,
     signOutUserSuccess,
 } from '../redux/user/userSlice';
+import { Link } from 'react-router-dom';
 
 interface FormData {
     avatar?: string;
@@ -149,7 +150,7 @@ export default function Profile() {
             dispatch(signOutUserSuccess(data));
         } catch (err: unknown) {
             const error = err as Error;
-            console.log(error.message);
+            dispatch(signOutUserFailure(error.message));
         }
     };
 
@@ -223,6 +224,9 @@ export default function Profile() {
                 >
                     {loading ? 'Loading...' : 'Update'}
                 </button>
+                <Link to={"/create-listing"} className='bg-green-700 text-white p-3 rounded-lg uppercase text-center hover:opacity-95'>
+                    Create Listing
+                </Link>
             </form>
             <div className='flex justify-between mt-5'>
                 <span

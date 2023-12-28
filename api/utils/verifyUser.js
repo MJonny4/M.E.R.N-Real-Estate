@@ -8,8 +8,6 @@ dotenv.config();
 export const verifyToken = (req, res, next) => {
     const access_token = req.cookies.access_token;
 
-    console.log(req);
-
     if (!access_token) return next(errorHandler(401, 'Unauthorized'));
 
     jwt.verify(access_token, process.env.JWT_SECRET, (err, user) => {
