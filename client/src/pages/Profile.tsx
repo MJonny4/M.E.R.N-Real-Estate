@@ -237,10 +237,15 @@ export default function Profile() {
                 >
                     Sign Out
                 </span>
-
-                {error && <p className='text-red-700'>{error}</p>}
+            </div>
+            <div className='mt-5 flex justify-center'>
                 {updateSuccess && (
-                    <p className='text-green-700'>Update Success</p>
+                    <span className='text-green-700'>
+                        Profile updated successfully!
+                    </span>
+                )}
+                {error && (
+                    <span className='text-red-700'>Error updating profile</span>
                 )}
             </div>
         </div>
