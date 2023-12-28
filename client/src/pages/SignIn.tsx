@@ -85,7 +85,7 @@ export default function SignIn() {
                 <p>Don&apos;t have an account?</p>
                 <Link to="/signup">
                     <span className="text-blue-700 hover:underline">
-                        Sign In
+                        Sign Up
                     </span>
                 </Link>
             </div>

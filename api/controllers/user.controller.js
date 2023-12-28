@@ -40,3 +40,19 @@ export const updateUser = async (req, res, next) => {
         return next(errorHandler(500, 'Error updating user'));
     }
 };
+
+export const deleteUser = async (req, res, next) => {
+    if (req.user.id !== req.params.id)
+        return next(errorHandler(401, 'Unauthorized to delete this user'));
+
+    try {
+        await User.findByIdAndDelete(req.params.id);
+        res.clearCookie('access_token');
+        res.status(200).json({
+            success: true,
+            message: 'User deleted',
+        });
+    } catch (err) {
+        return next(errorHandler(500, 'Error deleting user'));
+    }
+};
