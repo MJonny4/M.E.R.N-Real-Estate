@@ -2,6 +2,7 @@ import bcryptjs from 'bcryptjs';
 
 import { errorHandler } from '../utils/error.js';
 import User from '../models/user.model.js';
+import Listing from '../models/listing.model.js';
 
 export const test = (req, res) => {
     res.send('Hello World!');
@@ -42,7 +43,7 @@ export const updateUser = async (req, res, next) => {
 };
 
 export const deleteUser = async (req, res, next) => {
-    if (req.user.id !== req.params.id)
+    if (req.user.id === req.params.id)
         return next(errorHandler(401, 'Unauthorized to delete this user'));
 
     try {
@@ -57,3 +58,18 @@ export const deleteUser = async (req, res, next) => {
     }
 };
 
+export const getUserListings = async (req, res, next) => {
+    if (req.user.id !== req.params.id) {
+        try {
+            const listings = await Listing.find({ userId: req.params.id });
+            res.status(200).json({
+                success: true,
+                listings,
+            });
+        } catch (error) {
+            return next(errorHandler(500, 'Error getting user listings'));
+        }
+    } else {
+        next(errorHandler(500, 'Error getting user listings'));
+    }
+};
