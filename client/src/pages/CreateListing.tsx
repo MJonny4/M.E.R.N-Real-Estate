@@ -173,7 +173,7 @@ export default function CreateListing() {
                 return;
             }
 
-            navigate(`/listing/${data._id}`);
+            navigate(`/listing/${data.listing._id}`);
         } catch (err: unknown) {
             const error = err as Error;
             setError(error.message);

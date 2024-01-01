@@ -59,17 +59,18 @@ export const deleteUser = async (req, res, next) => {
 };
 
 export const getUserListings = async (req, res, next) => {
-    if (req.user.id !== req.params.id) {
-        try {
-            const listings = await Listing.find({ userId: req.params.id });
-            res.status(200).json({
-                success: true,
-                listings,
-            });
-        } catch (error) {
-            return next(errorHandler(500, 'Error getting user listings'));
-        }
-    } else {
-        next(errorHandler(500, 'Error getting user listings'));
+    try {
+        if (req.user.id !== req.params.id)
+            return next(
+                errorHandler(401, 'Unauthorized to get this user listings')
+            );
+
+        const listings = await Listing.find({ userRef: req.params.id });
+        res.status(200).json({
+            success: true,
+            listings,
+        });
+    } catch (err) {
+        return next(errorHandler(500, 'Error getting user listings'));
     }
 };

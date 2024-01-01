@@ -16,6 +16,7 @@ export const createListing = async (req, res, next) => {
 export const deleteListing = async (req, res, next) => {
     try {
         const listing = await Listing.findById(req.params.id);
+
         if (!listing) {
             return next(errorHandler(404, 'Listing not found'));
         }
@@ -29,7 +30,8 @@ export const deleteListing = async (req, res, next) => {
             );
         }
 
-        await listing.remove();
+        await listing.deleteOne(); // or listing.remove() if you're using an older version of Mongoose
+
         return res.status(200).json({
             success: true,
             message: 'Listing deleted successfully',

@@ -7,7 +7,6 @@ import {
     getUserListings,
 } from '../controllers/user.controller.js';
 import { verifyToken } from '../utils/verifyUser.js';
-import { get } from 'mongoose';
 
 const router = Router();
 

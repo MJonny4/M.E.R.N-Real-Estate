@@ -310,12 +310,12 @@ export default function Profile() {
             <button
                 onClick={handleShowListing}
                 type='button'
-                className='text-green-700'
+                className='text-green-200 bg-green-700 font-bold uppercase px-3 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 hover:opacity-95 ease-linear transition-all duration-150 rounded-lg text-center'
             >
                 Show Listings
             </button>
             {showListingsError && (
-                <span className='text-red-700'>Error showing listings</span>
+                <span className='text-red-700 text-center'>Error showing listings</span>
             )}
 
             {userListings && userListings.length > 0 && (
