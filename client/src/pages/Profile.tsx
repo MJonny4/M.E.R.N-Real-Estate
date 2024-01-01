@@ -183,6 +183,29 @@ export default function Profile() {
         }
     };
 
+    const handleListingDelete = async (listingId: string) => {
+        try {
+            const response = await fetch(`/api/listing/delete/${listingId}`, {
+                method: 'DELETE',
+            });
+
+            const data = await response.json();
+            if (!data.success) {
+                return;
+            }
+
+            setUserListings((prev) =>
+                prev
+                    ? prev.filter((listing) => listing._id !== listingId)
+                    : null
+            );
+        } catch (err: unknown) {
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
+            const error = err as Error;
+            console.log(error);
+        }
+    };
+
     return (
         <div className='p-3 max-w-lg mx-auto'>
             <h1 className='text-3xl font-semibold text-center my-7'>Profile</h1>
@@ -319,7 +342,13 @@ export default function Profile() {
                                 {listing.name}
                             </Link>
                             <div className='flex flex-col items-center'>
-                                <button type='button' className='text-red-700'>
+                                <button
+                                    type='button'
+                                    className='text-red-700'
+                                    onClick={() =>
+                                        handleListingDelete(listing._id)
+                                    }
+                                >
                                     Delete
                                 </button>
                                 <button
