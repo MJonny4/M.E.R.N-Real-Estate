@@ -74,3 +74,16 @@ export const getUserListings = async (req, res, next) => {
         return next(errorHandler(500, 'Error getting user listings'));
     }
 };
+
+export const getUser = async (req, res, next) => {
+    try {
+        const user = await User.findById(req.params.id);
+        const { password, ...userInfo } = user._doc;
+        res.status(200).json({
+            success: true,
+            user: userInfo,
+        });
+    } catch (err) {
+        return next(errorHandler(500, 'Error getting user'));
+    }
+};
