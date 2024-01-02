@@ -4,7 +4,7 @@ import { errorHandler } from '../utils/error.js';
 import User from '../models/user.model.js';
 import Listing from '../models/listing.model.js';
 
-export const test = (req, res) => {
+export const test = (res) => {
     res.send('Hello World!');
 };
 
