@@ -42,3 +42,15 @@ app.use((err, req, res, next) => {
         message,
     });
 });
+
+// import Listing from "./models/listing.model.js"
+// import { mocker } from './mock.js';
+
+// const mockData = async (mocker, count) => {
+//     await Listing.deleteMany({});
+//     for (let i = 0; i < count; i++) {
+//         await Listing.insertMany(mocker[i]);
+//     }
+// }
+
+// mockData(mocker, 14);
