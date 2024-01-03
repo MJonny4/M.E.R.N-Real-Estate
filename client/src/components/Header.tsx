@@ -40,6 +40,7 @@ export default function Header() {
                     onSubmit={handleSubmit}
                 >
                     <input
+                        name='searchTerm'
                         type='text'
                         placeholder='Search...'
                         className='bg-transparent focus:outline-none w-24 sm:w-64'
