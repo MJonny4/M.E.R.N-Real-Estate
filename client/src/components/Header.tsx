@@ -19,10 +19,12 @@ export default function Header() {
     };
 
     useEffect(() => {
-        const urlParams = new URLSearchParams(window.location.search);
-        const searchTerm = urlParams.get('searchTerm');
-        setSearchTerm(searchTerm ?? '');
-    }, [searchTerm]);
+        const urlParams = new URLSearchParams(location.search);
+        const searchTermFromUrl = urlParams.get('searchTerm');
+        if (searchTermFromUrl) {
+            setSearchTerm(searchTermFromUrl);
+        }
+    }, [location.search]);
 
     return (
         <header className='bg-slate-200 shadow-md'>
@@ -33,7 +35,10 @@ export default function Header() {
                         <span className='text-slate-700'>Estate</span>
                     </h1>
                 </Link>
-                <form className='bg-slate-100 p-3 rounded-lg flex items-center' onSubmit={handleSubmit}>
+                <form
+                    className='bg-slate-100 p-3 rounded-lg flex items-center'
+                    onSubmit={handleSubmit}
+                >
                     <input
                         type='text'
                         placeholder='Search...'
