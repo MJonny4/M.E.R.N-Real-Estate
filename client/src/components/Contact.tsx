@@ -32,8 +32,8 @@ export default function Contact({ listing }: { listing: ListingType }) {
 
                 setLandlord(data.user);
             } catch (err: unknown) {
-                // eslint-disable-next-line @typescript-eslint/no-unused-vars
                 const error = err as Error;
+                console.error(error.message);
             }
         };
 

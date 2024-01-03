@@ -179,7 +179,7 @@ export default function Profile() {
         } catch (err: unknown) {
             // eslint-disable-next-line @typescript-eslint/no-unused-vars
             const error = err as Error;
-            setShowListingsError(true);
+            if (error) setShowListingsError(true);
         }
     };
 
@@ -315,7 +315,9 @@ export default function Profile() {
                 Show Listings
             </button>
             {showListingsError && (
-                <span className='text-red-700 text-center'>Error showing listings</span>
+                <span className='text-red-700 text-center'>
+                    Error showing listings
+                </span>
             )}
 
             {userListings && userListings.length > 0 && (

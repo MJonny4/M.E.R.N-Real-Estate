@@ -64,8 +64,9 @@ export default function CreateListing() {
                 setUploading(false);
             })
             // eslint-disable-next-line @typescript-eslint/no-unused-vars
-            .catch((error) => {
-                setImageUploadError('Image upload failed (2mb max)');
+            .catch((err: unknown) => {
+                const error = err as Error;
+                if (error) setImageUploadError('Image upload failed (2mb max)');
                 setUploading(false);
             });
     };

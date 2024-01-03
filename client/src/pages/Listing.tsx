@@ -47,7 +47,7 @@ export default function Listing() {
             } catch (err: unknown) {
                 // eslint-disable-next-line @typescript-eslint/no-unused-vars
                 const error = err as Error;
-                setError(true);
+                if (error) setError(true);
                 setLoading(false);
             }
         };
