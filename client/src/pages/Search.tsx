@@ -15,6 +15,7 @@ export default function Search() {
     });
     const [loading, setLoading] = useState(false);
     const [listings, setListings] = useState<ListingType[]>([]);
+    const [showMore, setShowMore] = useState(false);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -52,6 +53,10 @@ export default function Search() {
             const searchQuery = urlParams.toString();
             const response = await fetch(`/api/listing/get?${searchQuery}`);
             const data = await response.json();
+
+            if (data.listings.length > 8) {
+                setShowMore(true);
+            }
 
             if (data.success) {
                 setListings(data.listings);
@@ -122,6 +127,25 @@ export default function Search() {
         urlParams.set('order', sideBarData.order);
         const searchQuery = urlParams.toString();
         navigate(`/search?${searchQuery}`);
+    };
+
+    const onShowMoreClick = async () => {
+        const numberOfListings = listings.length;
+        const startIndex = numberOfListings;
+        const urlParams = new URLSearchParams(window.location.search);
+        urlParams.set('startIndex', startIndex.toString());
+
+        const searchQuery = urlParams.toString();
+        const response = await fetch(`/api/listing/get?${searchQuery}`);
+        const data = await response.json();
+
+        if (data.listings.length < 8) {
+            setShowMore(false);
+        }
+
+        if (data.success) {
+            setListings([...listings, ...data.listings]);
+        }
     };
 
     return (
@@ -271,6 +295,17 @@ export default function Search() {
                             <ListingItem key={listing._id} listing={listing} />
                         ))}
                 </div>
+                {showMore && (
+                    <button
+                        type='button'
+                        onClick={() => {
+                            onShowMoreClick();
+                        }}
+                        className='text-green-700 hover:underline p-7 text-center w-full'
+                    >
+                        Show More
+                    </button>
+                )}
             </div>
         </div>
     );
