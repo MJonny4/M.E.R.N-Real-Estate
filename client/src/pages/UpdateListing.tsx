@@ -50,7 +50,7 @@ export default function UpdateListing() {
         };
 
         fetchListing();
-    }, []);
+    }, [id]);
 
     const handleImageSubmit = () => {
         if (
