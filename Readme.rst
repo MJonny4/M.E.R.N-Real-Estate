@@ -27,6 +27,7 @@ Installation
    ``bash
    git clone https://github.com/your-username/M.E.R.N-Real-Estate.git
    cd M.E.R.N-Real-Estate
+   ``
 
 2. **Install Dependencies:**  
    ``bash
@@ -37,6 +38,7 @@ Installation
    # Install client dependencies
    cd ../client
    npm install
+   ``
 
 3. **Set Up Environment Variables:**
 
@@ -51,6 +53,7 @@ Installation
     npm start
 
     The application will be accessible at http://localhost:3000.
+    ``
 
 Contributing
 ------------
