@@ -24,12 +24,12 @@ Installation
 ------------
 
 1. **Clone the Repository:**
-   .. code-block:: bash
+   ``bash
    git clone https://github.com/your-username/M.E.R.N-Real-Estate.git
    cd M.E.R.N-Real-Estate
 
 2. **Install Dependencies:**  
-    .. code-block:: bash
+   ``bash
    # Install server dependencies
    cd server
    npm install
@@ -43,7 +43,7 @@ Installation
    Create a `.env` file in the `server` directory with the necessary configuration (e.g., MongoDB connection string, server port).
 
 4. **Run the Application:**
-    .. code-block:: bash
+   ``bash
     # Start the server (from the 'server' directory)
     npm start
 
